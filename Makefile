@@ -22,8 +22,9 @@ all:
 	# compile les fichiers .c en objet (pareil pour les 2 os)
 	$(CC) main.c -o ./$(OBJ_DIR)/main.c.o -c
 	$(CC) function.c -o ./$(OBJ_DIR)/function.c.o -c
+	$(CC) save.c -o ./$(OBJ_DIR)/save.c.o -c
 	# compile les objets en l'executable
-	$(CC) ./$(OBJ_DIR)/function.c.o ./$(OBJ_DIR)/main.c.o -o ./$(BUILD_DIR)/$(EXEC_NAME).exe
+	$(CC) ./$(OBJ_DIR)/function.c.o ./$(OBJ_DIR)/main.c.o ./$(OBJ_DIR)/save.c.o -o ./$(BUILD_DIR)/$(EXEC_NAME).exe
 
 # efface les fichiers compilés
 clean:

@@ -210,6 +210,15 @@ int main()
     else
     {
         file = choice2("Step_4.txt", "Choice_4.txt", "Step_5.txt", "Choice_5.txt");
+
+        if(file == "Step_4.txt")
+        {
+            //combat
+        }
+        else
+        {
+            //combat
+        }
     }
 
     return 0;
