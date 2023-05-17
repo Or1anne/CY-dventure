@@ -12,11 +12,11 @@ void display_step_file(const char *step, int clear)
         system("cls"); // WINDOWS
         // printf("\033[H\033[J"); // LINUX
     }
-    // OUverture du fichier et teste qu'il s'est bien ouvert
+    // Ouverture du fichier et teste qu'il s'est bien ouvert
     file = fopen(step, "r");
     if (file == NULL)
     {
-        printf("L'ouverture du fichier est impossible.");
+        printf("L'ouverture du fichier \"%s\" est impossible.", step);
         exit(1);
     }
 
@@ -33,6 +33,7 @@ void display_step_file(const char *step, int clear)
     fclose(file);
 }
 
+// Permet d'afficher tout le texte saisie
 void display_step_string(const char *string)
 {
     int count = 0;
@@ -42,29 +43,6 @@ void display_step_string(const char *string)
         Sleep(TEXT_SPEED);
         count++;
     } while (string[count] != '\0');
-}
-
-// Fonction qui récupère le nombre de caractère d'un fichier sans les retour à la ligne
-int number_char(const char *step)
-{
-
-    int count = 0;
-    FILE *file;
-
-    // Ouverture du fichier
-    if ((file = fopen(step, "r")) == NULL)
-        perror("Erreur à l'ouverture du fichier");
-
-    else
-    {
-        while (fgetc(file) != EOF) // Parcours du fichier
-            count++;               // Incrémentation du compteur
-    }
-
-    // Fermeture du fichier
-    fclose(file);
-
-    return count;
 }
 
 // Fonction qui vide la file d'attends des entrées du terminal
@@ -159,7 +137,7 @@ char *choice3(char *step1, char *choice_1, char *step2, char *choice_2, char *st
     }
 }
 
-// FOnction qui attends jusqu'à que l'utilisateur appuie sur entrée
+// Fonction qui attends jusqu'à que l'utilisateur appuie sur entrée
 void confirm()
 {
     char c = '0';
@@ -168,58 +146,4 @@ void confirm()
     {
         scanf("%c", &c);
     } while (c != '\n');
-}
-
-int main()
-{
-    char *file = NULL;
-    int step = 0;
-
-    if (game_save_exist()) {
-        // demandez si reprendre partie
-        // si oui -> game_load(&step);
-    } // sinon osef
-
-
-    if (step == STEP_BEGIN)
-    {
-        step++;
-        game_save(step);
-        printf("\n");
-        display_step_file("Step_0.txt", true);
-        printf("\n");
-        printf("\n");
-    }
-
-    if (step == STEP_CHOICE1)
-    {
-        // Pas de choix, attente de confirmation
-        confirm();
-        display_step_file("Step_1.txt", true);
-        printf("\n");
-        printf("\n");
-        step++;
-    }
-
-    file = choice2("Step_2.txt", "Choice_2.txt", "Step_3.txt", "Choice_3.txt");
-
-    if (file == "Step_2.txt")
-    {
-        // combat perdu
-    }
-    else
-    {
-        file = choice2("Step_4.txt", "Choice_4.txt", "Step_5.txt", "Choice_5.txt");
-
-        if(file == "Step_4.txt")
-        {
-            //combat
-        }
-        else
-        {
-            //combat
-        }
-    }
-
-    return 0;
 }

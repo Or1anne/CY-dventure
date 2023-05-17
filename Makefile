@@ -23,8 +23,11 @@ all:
 	$(CC) main.c -o ./$(OBJ_DIR)/main.c.o -c
 	$(CC) function.c -o ./$(OBJ_DIR)/function.c.o -c
 	$(CC) save.c -o ./$(OBJ_DIR)/save.c.o -c
+	$(CC) player.c -o ./$(OBJ_DIR)/player.c.o -c
+	$(CC) fight.c -o ./$(OBJ_DIR)/fight.c.o -c
+	
 	# compile les objets en l'executable
-	$(CC) ./$(OBJ_DIR)/function.c.o ./$(OBJ_DIR)/main.c.o ./$(OBJ_DIR)/save.c.o -o ./$(BUILD_DIR)/$(EXEC_NAME).exe
+	$(CC) ./$(OBJ_DIR)/function.c.o ./$(OBJ_DIR)/main.c.o ./$(OBJ_DIR)/save.c.o ./$(OBJ_DIR)/player.c.o ./$(OBJ_DIR)/fight.c.o -o ./$(BUILD_DIR)/$(EXEC_NAME).exe
 
 # efface les fichiers compilés
 clean:

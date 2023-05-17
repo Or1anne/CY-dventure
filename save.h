@@ -1,9 +1,13 @@
 #ifndef HEADER_SAVE
 #define HEADER_SAVE 1
 
+// déclaration des bibliothèques
 #include "function.h"
+
+// déclaration des constantes
 #define FILE_SAVE_NAME "Cydventure.save"
 
+// déclaration des fonctions
 typedef enum
 {
     STEP_BEGIN,

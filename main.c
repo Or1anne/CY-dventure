@@ -1,54 +1,190 @@
 #include "function.h"
 #include "save.h"
-//#define S1 "Step_0.txt"
+#include "fight.h"
 
 int main()
 {
     char *file = NULL;
     int step = 0;
+    int winner;
+    Entity adventurer;
+    Entity dragon;
+    Entity goblin;
+    Entity kraken;
+    Entity boss;
+    Entity titan;
 
-    if (game_save_exist()) {
-        // demandez si reprendre partie
-        // si oui -> game_load(&step);
-    } // sinon osef
+    // attribuer les stats des entités
+    adventurer.stat = getEntityStats(Adventurer);
+    dragon.stat = getEntityStats(Dragon);
+    goblin.stat = getEntityStats(Goblin);
+    kraken.stat = getEntityStats(Kraken);
+    boss.stat = getEntityStats(Boss);
+    titan.stat = getEntityStats(Titan);
+    // attribuer les roles des entités
+    adventurer.role = Adventurer;
+    dragon.role = Dragon;
+    goblin.role = Goblin;
+    kraken.role = Kraken;
+    boss.role = Boss;
+    titan.role = Titan;
+    // mettre les defences à false
+    adventurer.defend = false;
+    dragon.defend = false;
+    goblin.defend = false;
+    kraken.defend = false;
+    boss.defend = false;
+    titan.defend = false;
 
+    // if (game_save_exist()) {
+    //     // demandez si reprendre partie
+    //     // si oui -> game_load(&step);
+    // } // sinon osef
 
-    if (step == STEP_BEGIN)
+    // if (step == STEP_BEGIN)
+    // {
+    //     step++;
+    // game_save(step);
+
+    /* // Etape 0
+    printf("\n");
+    display_step_file("story/Step_0.txt", true);
+    printf("\n");
+    printf("\n");
+    //}
+
+    // if (step == STEP_CHOICE1)
+    // {
+
+    // Etape 1
+    confirm();
+    display_step_file("story/Step_01.txt", true);
+    printf("\n");
+    printf("\n");
+    // step++;
+    //}
+ */
+    file = choice2("story/Step_02.txt", "story/Choice_02.txt", "story/Step_03.txt", "story/Choice_03.txt");
+
+    // ETape 2
+    if (file == "story/Step_02.txt")
     {
-        step++;
-        game_save(step);
-        printf("\n");
-        display_step_file("Step_0.txt", true);
-        printf("\n");
-        printf("\n");
+        // confirm();
+        // printf("\n");
+        // display_step_string("Vous etes seul face a une gorde d ennemi, ils se jetteraient sur vous. ");
+        // display_step_file("story/End_1.txt",false);
+        display_step_string("\t\t\t\t\t\t\t\t\t\tFIN\n");
     }
 
-    if (step == STEP_CHOICE1)
-    {
-        // Pas de choix, attente de confirmation
-        confirm();
-        display_step_file("Step_1.txt", true);
-        printf("\n");
-        printf("\n");
-        step++;
-    }
-
-    file = choice2("Step_2.txt", "Choice_2.txt", "Step_3.txt", "Choice_3.txt");
-
-    if (file == "Step_2.txt")
-    {
-        // combat perdu
-    }
+    // Etape 3
     else
     {
-        file = choice2("Step_4.txt", "Choice_4.txt", "Step_5.txt", "Choice_5.txt");
+        file = choice2("story/Step_04.txt", "story/Choice_04.txt", "story/Step_05.txt", "story/Choice_05.txt");
+
+        // Etape 4
+        if (file == "story/Step_04.txt")
+        {/*adventurer.stat.hp-=; on lui baisse ses pv*/
+            
+        
+            winner = fight(&adventurer, &kraken);
+            if (winner == Adventurer )
+            {
+                // Etape 7
+                confirm();
+                display_step_file("story/Step_07.txt",true);
+
+                // CONTINUER HISTOIRE
+            }
+            else 
+            {
+                // Etape 8
+                confirm();
+                display_step_file("story/Step_06.txt",true);
+
+                // CONTINUER HISOIRE
+            }
+        }
+
+        // Etape 5
+        else
+        {
+            confirm();
+            winner= 1; // REMPLACER PAR LA VRAI FONCTION
+            if (winner== false)
+            {
+                confirm();
+                display_step_file("story/End_2.txt", true);
+                display_step_string("\t\t\t\t\t\t\t\t\t\tFIN\n");
+            }
+
+            // Etape 8
+            else
+            {
+                confirm();
+                display_step_file("story/Step_08.txt", true);
+
+                // Etape 10
+                confirm();
+                display_step_file("story/Step_10.txt", true);
+
+                file = choice3("story/Step_13.txt", "story/Choice_13.txt", "story/Step_14.txt", "story/Choice_14.txt", "story/Step_15.txt", "story/Choice_15.txt");
+
+                // Etape 13
+                if (file == "story/Step_13.txt")
+                {
+                    confirm();
+                    winner = 1; // REMPLACER PAR LA VRAI FONCTION
+                    if (winner == false)
+                    {
+                        confirm();
+                        display_step_file("story/End_2.txt", true);
+                        display_step_string("\t\t\t\t\t\t\t\t\t\tFIN\n");
+                        exit(0);
+                    }
+                }
+
+                // Etape 14
+                if (file == "story/Step_14.txt")
+                {
+                    winner = fight(&adventurer, &titan);
+                    /* if (winner == adventurer )
+                    {
+                        victoire;
+                    }
+                    else 
+                    {
+                        defaite;
+                    }*/
+
+                }
+
+                // Etape 15
+                confirm();
+                // Etape 17
+                display_step_file("story/Step_17.txt", true);
+            }
+        }
+        // Etape 18
+        confirm();
+        display_step_file("story/Step_18.txt",true);
+
+        // Etape 19
+        confirm();
+        display_step_file("story/Step_19.txt",true);
+
+        // combat final
+        
     }
 
     return 0;
 }
 
-/* 
-cd S2/Projet/Histoire
-gcc main.c function.c -o CYdventure.exe
+/*
+
+//RAJOUTER TOUT NOUVEAU FILES //
+gcc main.c function.c save.c player.c fight.c -o CYdventure.exe
 .\CYdventure.exe
+
+CHANGER LES COMMANDES WINDOWS EN LINUX DANS LE MAKEFILE ET DANS LA FONCTION DISPLAY_STEP_FILE
+
 */
