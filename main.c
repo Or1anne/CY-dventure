@@ -100,65 +100,63 @@ int main()
         // Etape 4
         if (file == "story/Step_04.txt")
         {
-            do
+            
+            confirm();
+            // BUG ne s'efface pas, a test sur linux
+            winner = fight(&adventurer, &kraken);
+            empty_stdin_buffer();
+            clear_console();
+
+            if (winner == Adventurer)
             {
+                // Etape 7
                 confirm();
-                // BUG ne s'efface pas, a test sur linux
-                winner = fight(&adventurer, &kraken);
-                empty_stdin_buffer();
-                clear_console();
+                display_step_file("story/Step_07.txt", true);
+                adventurer.stat.def += 2;
 
-                if (winner == Adventurer)
+                // Etape 9
+                confirm();
+                display_step_file("story/Step_09.txt", true);
+
+                // Etape 11 et 12
+                file = choice2("story/Step_11.txt", "story/Choice_11.txt", "story/Step_12.txt", "story/Choice_12.txt");
+
+                // Etape 16
+                confirm();
+                display_step_file("story/Step_16.txt", true);
+
+                adventurer.stat.hp += 25;
+            }
+            else
+            {
+                // Etape 6
+                confirm();
+                display_step_file("story/Step_06.txt", true);
+
+                adventurer.stat.hp -= 3;
+
+                if (adventurer.stat.hp > 0)
                 {
-                    // Etape 7
-                    confirm();
-                    display_step_file("story/Step_07.txt", true);
-                    adventurer.stat.def += 2;
 
-                    // Etape 9
-                    confirm();
-                    display_step_file("story/Step_09.txt", true);
+                    file = choice2("story/Fight_again.txt", "story/Choice_fight.txt", "story/End_3.txt", "story/Choice_end_3.tx");
 
-                    // Etape 11 et 12
-                    file = choice2("story/Step_11.txt", "story/Choice_11.txt", "story/Step_12.txt", "story/Choice_12.txt");
-
-                    // Etape 16
-                    confirm();
-                    display_step_file("story/Step_16.txt", true);
-
-                    adventurer.stat.hp += 25;
-                }
-                else
-                {
-                    // Etape 6
-                    confirm();
-                    display_step_file("story/Step_06.txt", true);
-
-                    adventurer.stat.hp -= 3;
-
-                    if (adventurer.stat.hp > 0)
-                    {
-
-                        file = choice2("story/Fight_again.txt", "story/Choice_fight.txt", "story/End_3.txt", "story/Choice_end_3.tx");
-
-                        if (file == "story/End_3.txt")
-                        {
-                            confirm();
-                            display_step_file("story/End_3.txt", true);
-                            display_step_string("\t\t\t\t\t\t\t\t\t\tFIN\n\n");
-                            exit(0);
-                        }
-                    }
-
-                    else
+                    if (file == "story/End_3.txt")
                     {
                         confirm();
-                        display_step_file("story/End_2.txt", true);
+                        display_step_file("story/End_3.txt", true);
                         display_step_string("\t\t\t\t\t\t\t\t\t\tFIN\n\n");
                         exit(0);
                     }
                 }
-            } while (file == "story/Fight_again.txt");
+
+                else
+                {
+                    confirm();
+                    display_step_file("story/End_2.txt", true);
+                    display_step_string("\t\t\t\t\t\t\t\t\t\tFIN\n\n");
+                    exit(0);
+                }
+            }
         }
 
         // Etape 5
