@@ -43,44 +43,33 @@ Type fight(Entity *attacker, Entity *target)
     {
     case 1:
       attacker->defend = true;
-      if (attacker->role == Adventurer)
-      {
-        display_step_string("Vous vous proteger!\n");
-      }
-      else
-      {
-        display_step_string("L'ennemi se protege!\n");
-      }
+      display_step_string(getEntityName(attacker->role));
+      display_step_string(" se défend!\n");
+      display_step_string("\n");
+        
+
       break;
     case 2:
       display_step_string("\nLe ");
       display_step_string(getEntityName(attacker->role));
       display_step_string(" attaque!\n");
+      display_step_string("\n");
       if (damage <= 0)
       {
         display_step_string("Ce n'est pas tres efficace...\n");
       }
-      else
-      {
-        if (attacker->role == Adventurer)
-        {
-          display_step_string("Vous attaquez l'ennemi...\n");
-        }
-        else
-        {
-          display_step_string("L'ennemi vous attaque...\n");
-        }
+    
+       
+     
         if (target->defend == true)
         {
           target->stat.hp -= damage / 2;
-          if (attacker->role == Adventurer)
-          {
-            display_step_string("Mais vous vous étiez defendu et ne prenez que la moitié des dégats!\n"); // PROBLEME
-          }
-          else
-          {
-            display_step_string("Mais il s'est défendu et ne prend que la moitié des dégats!\n"); // PROBLEME
-          }
+        
+            // PROBLEME
+             display_step_string(getEntityName(attacker->role));
+             display_step_string(" se défend et ne ^prend donc que la moitité des dégats \n");
+            display_step_string("/n");
+         
         }
         else
         {
@@ -92,7 +81,8 @@ Type fight(Entity *attacker, Entity *target)
 
     if (target->stat.hp <= 0)
     {
-      // faire un autre if a l'interieur et si c'est le hero qui a 0, je return 1 et si c'est le monstre qui a 0, je return 0
+      display_step_string( getEntityName(attacker->role));
+      display_step_string ( " a remporté la victoire\n");
       return attacker->role;
     }
 
@@ -102,6 +92,13 @@ Type fight(Entity *attacker, Entity *target)
     target = tmp;
 
     Sleep(500);
+    display_step_string("\n");
+    displayStats(attacker, target);
+    display_step_string("\n");
+    
+  
+  
+    
   }
 }
 
