@@ -75,11 +75,11 @@ Type fight(Entity *attacker, Entity *target)
           target->stat.hp -= damage / 2;
           if (attacker->role == Adventurer)
           {
-            display_step_string("Mais vous vous etiez defendu et ne prenez que la moitie des degats!\n");
+            display_step_string("Mais vous vous étiez defendu et ne prenez que la moitié des dégats!\n"); // PROBLEME
           }
           else
           {
-            display_step_string("Mais il s'est defendu et ne prend que la moitie des degats!\n");
+            display_step_string("Mais il s'est défendu et ne prend que la moitié des dégats!\n"); // PROBLEME
           }
         }
         else
@@ -129,7 +129,7 @@ Type fightSetup()
   kraken.role = Kraken;
   boss.role = Boss;
   titan.role = Titan;
-  
+
   // mettre les defences à false
   aventurier.defend = false;
   dragon.defend = false;
@@ -138,6 +138,7 @@ Type fightSetup()
   boss.defend = false;
   titan.defend = false;
 
+  // tester qui est le vainqueur
   int winner;
   if (winner == Adventurer)
   {

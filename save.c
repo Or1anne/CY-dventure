@@ -12,11 +12,11 @@ int game_save_exist(){
 };
 
 /* parametres à sauvegarder */
-void game_save(int step){
+void game_save(int step /* rajouter parametres*/){
     Save_Struct save;
     FILE *file = fopen(FILE_SAVE_NAME, "wb");
     if (file == NULL) {
-        // ...
+        printf("L'ouverture du fichier \"%s\" est impossible.", step);
         exit(1);
     }
 
@@ -28,12 +28,12 @@ void game_save(int step){
 };
 
 /* pointeurs de paramètres à charger */
-void game_load(int *step){
+void game_load(int *step /* rajouter parametres pointeurs*/){
     Save_Struct save;
     FILE *file = fopen(FILE_SAVE_NAME, "rb");
     if (file == NULL)
     {
-        // ...
+        printf("L'ouverture du fichier \"%s\" est impossible.", step);
         exit(1);
     }
 

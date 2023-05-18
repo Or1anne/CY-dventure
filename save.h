@@ -8,16 +8,20 @@
 #define FILE_SAVE_NAME "Cydventure.save"
 
 // déclaration des fonctions
+
+/* 
 typedef enum
 {
     STEP_BEGIN,
     STEP_CHOICE1,
 } Game_step;
+ */
 
 typedef struct Save_Struct
 {
     int step;
-    // ...
+    // rajouter parametres
+
 } Save_Struct;
 
 int game_save_exist();

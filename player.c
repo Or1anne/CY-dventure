@@ -1,7 +1,4 @@
 #include "player.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 Stats getEntityStats(Type entityType)
 {
@@ -88,7 +85,7 @@ char *getEntityName(Type role)
   return entityName;
 }
 
-// affichage des stats
+// Affichage des statistiques
 void displayStats(Entity *adventurer, Entity *entity)
 {
   if (adventurer == NULL)
@@ -108,7 +105,7 @@ void displayStats(Entity *adventurer, Entity *entity)
   }
 
   // \t est un alinéa, il aligne sur la colonne
-  printf("Adventurer \t| \t%s\nHP: %.1f \t| \tHP: %.1f\nAtk: %d \t| \tAtk: %d\nDef: %d \t| \tDef: %d\n",
+  printf("Adventurer \t| \t%s\nHP: %.1f \t| \tHP: %.1f\nAtk: %d \t| \tAtk: %d\nDef: %d \t\t| \tDef: %d\n",
          getEntityName(entity->role),
          adventurer->stat.hp, entity->stat.hp,
          adventurer->stat.atk, entity->stat.atk,

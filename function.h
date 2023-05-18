@@ -19,5 +19,6 @@ char *choice2(char *step1, char *choice1, char *step2, char *choice2);
 char *choice3(char *step1, char *choice1, char *step2, char *choice2, char *step3, char *choice3);
 void confirm();
 void empty_stdin_buffer();
+void clear_console();
 
 #endif

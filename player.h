@@ -1,6 +1,11 @@
 #ifndef PLAYER_HEADER
 #define PLAYER_HEADER
 
+// déclaration des bibliothèques
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 // énumération avec les differents monstres
 typedef enum Type
 {

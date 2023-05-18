@@ -1,6 +1,13 @@
 #include "function.h"
 #include "save.h"
 
+// efface la console
+void clear_console()
+{
+    system("cls"); // WINDOWS
+    // printf("\033[H\033[J"); // LINUX
+}
+
 // Permet d'afficher tout le texte contenu dans un fichier txt
 void display_step_file(const char *step, int clear)
 {
@@ -8,9 +15,7 @@ void display_step_file(const char *step, int clear)
 
     if (clear == true)
     {
-        // efface la console
-        system("cls"); // WINDOWS
-        // printf("\033[H\033[J"); // LINUX
+        clear_console();
     }
     // Ouverture du fichier et teste qu'il s'est bien ouvert
     file = fopen(step, "r");
@@ -27,7 +32,7 @@ void display_step_file(const char *step, int clear)
         printf("%c", caractere);
         Sleep(TEXT_SPEED);
     }
-    printf("\n\n");
+    printf("\n\n\n");
 
     // Fermeture du fichier
     fclose(file);
