@@ -24,8 +24,9 @@ Type fight(Entity *attacker, Entity *target)
     if (attacker->role == Adventurer)
     {
       // demande de l'action
-      display_step_string("1) Defendre\n \n 2) Attaquer\n");
       dispaly_step_string ("/n");
+      display_step_string("1) Defendre\n 2) Attaquer\n");
+      
       do
       {
         display_step_string(">> ");
@@ -44,6 +45,7 @@ Type fight(Entity *attacker, Entity *target)
     {
     case 1:
       attacker->defend = true;
+      dispaly_step_string ("/n");
       display_step_string(getEntityName(attacker->role));
       display_step_string(" se défend!\n");
       display_step_string("\n");
@@ -51,7 +53,7 @@ Type fight(Entity *attacker, Entity *target)
 
       break;
     case 2:
-      display_step_string("\nLe ");
+      display_step_string("\n");
       display_step_string(getEntityName(attacker->role));
       display_step_string(" attaque!\n");
       display_step_string("\n");
@@ -68,7 +70,7 @@ Type fight(Entity *attacker, Entity *target)
         
             // PROBLEME
              display_step_string(getEntityName(attacker->role));
-             display_step_string(" se défend et ne ^prend donc que la moitité des dégats \n");
+             display_step_string(" se défend et ne prend donc que la moitité des dégats \n");
             display_step_string("/n");
          
         }
