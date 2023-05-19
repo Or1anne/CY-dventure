@@ -24,7 +24,7 @@ Type fight(Entity *attacker, Entity *target)
     if (attacker->role == Adventurer)
     {
       // demande de l'action
-      display_step_string("1) Defendre\n2) Attaquer\n");
+      display_step_string("1) Defendre\n \n 2) Attaquer\n");
       dispaly_step_string ("/n");
       do
       {
