@@ -25,6 +25,7 @@ Type fight(Entity *attacker, Entity *target)
     {
       // demande de l'action
       display_step_string("1) Defendre\n2) Attaquer\n");
+      dispaly_step_string ("/n");
       do
       {
         display_step_string(">> ");
