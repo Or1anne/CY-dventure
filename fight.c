@@ -95,9 +95,8 @@ Type fight(Entity *attacker, Entity *target)
     target = tmp;
 
     Sleep(500);
-    display_step_string("\n");
-    displayStats(attacker, target);
-    display_step_string("\n");
+  
+
     
   
   
