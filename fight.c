@@ -34,9 +34,7 @@ Type fight(Entity *attacker, Entity *target, char * step_name)
     if (attacker->role == Adventurer)
     {
       // demande de l'action
-      display_step_string ("\n");
-      display_step_string("1) Défendre\n2) Attaquer\n");
-
+      display_step_string("1) Defendre\n2) Attaquer\n");
       do
       {
         display_step_string(">> ");
@@ -56,49 +54,45 @@ Type fight(Entity *attacker, Entity *target, char * step_name)
     {
     case 1:
       attacker->defend = true;
-      display_step_string ("\n");
-      display_step_string(getEntityName(attacker->role));
-      display_step_string(" se défend!\n");
-      display_step_string("\n");
+      if (attacker->role == Adventurer)
+      {
+        display_step_string("Vous vous proteger!\n");
+      }
+      else
+      {
+        display_step_string("L'ennemi se protege!\n");
+      }
       break;
 
     case 2:
       display_step_string("\n");
       display_step_string(getEntityName(attacker->role));
       display_step_string(" attaque!\n");
-      
       if (damage <= 0)
       {
         display_step_string("Ce n'est pas tres efficace...\n");
       }
       else
       {
-        //if (attacker->role == Adventurer)
-        //{
-        //  display_step_string("Vous attaquez l'ennemi...\n");
-        //}
-        //else
-        //{
-         // display_step_string("L'ennemi vous attaque...\n");
-        //}
-
+        if (attacker->role == Adventurer)
+        {
+          display_step_string("Vous attaquez l'ennemi...\n");
+        }
+        else
+        {
+          display_step_string("L'ennemi vous attaque...\n");
+        }
         if (target->defend == true)
         {
           target->stat.hp -= damage / 2;
-
-          //if (attacker->role == Adventurer)
-          //{
-          //  display_step_string("Mais vous vous étiez defendu et ne prenez que la moitié des dégats!\n"); // PROBLEME
-          //}
-          //else
-          //{
-          //  display_step_string("Mais il s'est défendu et ne prend que la moitié des dégats!\n"); // PROBLEME
-          //}
-
-          display_step_string(getEntityName(target->role));
-          display_step_string(" se défend et ne prend donc que la moitité des dégats \n");
-          display_step_string("\n");
-
+          if (attacker->role == Adventurer)
+          {
+            display_step_string("Mais vous vous étiez defendu et ne prenez que la moitié des dégats!\n"); // PROBLEME
+          }
+          else
+          {
+            display_step_string("Mais il s'est défendu et ne prend que la moitié des dégats!\n"); // PROBLEME
+          }
         }
 
         else
@@ -112,26 +106,7 @@ Type fight(Entity *attacker, Entity *target, char * step_name)
 
     if (target->stat.hp <= 0)
     {
-      display_step_string("\n");
-      
-      if (attacker->role == Adventurer)
-      {
-        displayStats(attacker, target);
-      }
-
-      else
-      {
-        displayStats(target, attacker);
-      }
-
-      display_step_string("\n");
-      display_step_string( getEntityName(attacker->role));
-      display_step_string ( " a remporté la victoire\n");
-
-      if(attacker->role != Adventurer){
-        display_step_string("\nVous avez perdu... \n");
-      }
-
+      // faire un autre if a l'interieur et si c'est le hero qui a 0, je return 1 et si c'est le monstre qui a 0, je return 0
       return attacker->role;
     }
 
@@ -140,7 +115,7 @@ Type fight(Entity *attacker, Entity *target, char * step_name)
     attacker = target;
     target = tmp;
 
-    game_sleep(500);
+    Sleep(500);
   }
 }
 
