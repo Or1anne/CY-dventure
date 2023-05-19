@@ -3,29 +3,23 @@
 
 // déclaration des bibliothèques
 #include "function.h"
+#include "player.h"
 
 // déclaration des constantes
-#define FILE_SAVE_NAME "Cydventure.save"
+#define FILE_SAVE_NAME "save/Cydventure.save"
 
 // déclaration des fonctions
 
-/* 
-typedef enum
-{
-    STEP_BEGIN,
-    STEP_CHOICE1,
-} Game_step;
- */
-
 typedef struct Save_Struct
 {
-    int step;
-    // rajouter parametres
-
+    char step[20];
+    Entity monster;
+    Entity adventurer;
+    
 } Save_Struct;
 
 int game_save_exist();
-void game_save(/* parametres à sauvegarder */ int step);
-void game_load(/* pointeurs de paramètres à charger */ int *step);
+void game_save(char *step, Entity monster, Entity adventurer);
+void game_load(char *step, Entity *monster, Entity *adventurer);
 
 #endif

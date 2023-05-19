@@ -4,7 +4,7 @@
 #define FIGHT_HEADER
 
 // déclaration des fonctions
-Type fight(Entity *attacker, Entity *target);
+Type fight(Entity *attacker, Entity *target, char * step_name);
 Type fightSetup();
 
 #endif

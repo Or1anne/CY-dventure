@@ -1,11 +1,30 @@
 #include "function.h"
 #include "save.h"
 
+
+// Sleep pour windows et linux
+void game_sleep(long long ms) {
+    #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)
+    #include <Windows.h>
+        Sleep(ms);
+    #elif _POSIX_C_SOURCE >= 199309L
+        struct timespec ts;
+        ts.tv_sec = ms / 1000;
+        ts.tv_nsec = (ms % 1000) * 1000 * 1000;
+        nanosleep(&ts, 0);
+    #else
+        if (ms >= 1000) {
+            sleep(ms / 1000);
+        }
+        usleep((ms % 1000) * 1000);
+    #endif
+}
+
 // efface la console
 void clear_console()
 {
-    system("cls"); // WINDOWS
-    // printf("\033[H\033[J"); // LINUX
+    //system("cls"); // WINDOWS //
+    printf("\033[H\033[J"); // LINUX //
 }
 
 // Permet d'afficher tout le texte contenu dans un fichier txt
@@ -30,9 +49,10 @@ void display_step_file(const char *step, int clear)
     while ((caractere = fgetc(file)) != EOF)
     {
         printf("%c", caractere);
-        Sleep(TEXT_SPEED);
+        fflush(stdout);     // Activation forcée des flashs des caractères dans la console
+        game_sleep(TEXT_SPEED);
     }
-    printf("\n\n\n");
+    printf("\n\n");
 
     // Fermeture du fichier
     fclose(file);
@@ -45,7 +65,8 @@ void display_step_string(const char *string)
     do
     {
         printf("%c", string[count]);
-        Sleep(TEXT_SPEED);
+        fflush(stdout);     // Activation forcée des flashs des caractères dans la console
+        game_sleep(TEXT_SPEED);
         count++;
     } while (string[count] != '\0');
 }
@@ -80,17 +101,12 @@ char *choice2(char *step1, char *choice_1, char *step2, char *choice_2)
         empty_stdin_buffer();
     } while (c != 'A' && c != 'B');
 
-    // Affiche l'étape en fonction du choix
     if (c == 'A')
     {
-        printf("\n");
-        display_step_file(step1, true);
         return step1; // Retourne l'étape choisie
     }
     else
     {
-        printf("\n");
-        display_step_file(step2, true);
         return step2; // Retourne l'étape choisie
     }
 }
@@ -121,23 +137,16 @@ char *choice3(char *step1, char *choice_1, char *step2, char *choice_2, char *st
         empty_stdin_buffer();
     } while (c != 'A' && c != 'B' && c != 'C');
 
-    // Affiche l'étape en fonction du choix
     if (c == 'A')
     {
-        printf("\n");
-        display_step_file(step1, true);
         return step1; // Retourne l'étape choisie
     }
     else if (c == 'B')
     {
-        printf("\n");
-        display_step_file(step2, true);
         return step2; // Retourne l'étape choisie
     }
     else
     {
-        printf("\n");
-        display_step_file(step3, true);
         return step3; // Retourne l'étape choisie
     }
 }
@@ -146,7 +155,7 @@ char *choice3(char *step1, char *choice_1, char *step2, char *choice_2, char *st
 void confirm()
 {
     char c = '0';
-    display_step_string("\nAppuyez sur la touche entree pour continuer... ");
+    display_step_string("\nAppuyez sur la touche entrée pour continuer... ");
     do
     {
         scanf("%c", &c);
