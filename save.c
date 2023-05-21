@@ -21,7 +21,7 @@ void game_save(char *step, Entity monster, Entity adventurer){
         printf("L'ouverture du fichier \"%s\" est impossible.", step);
         exit(1);
     }
-
+    // permet de sauvegarder les roles de la partie en cours
     strcpy(save.step,step);
     save.monster = monster;
     save.adventurer = adventurer;
@@ -37,20 +37,23 @@ void game_load(char *step, Entity *monster, Entity *adventurer){
     Save_Struct save;
     FILE *file = fopen(FILE_SAVE_NAME, "rb");
 
-    if (file == NULL)
+    if (file == NULL) // permet de vérifier si une sauvegarde existe et peut être lu
     {
         printf("L'ouverture du fichier \"%s\" est impossible.", step);
         exit(1);
     }
-    if (step == NULL){
-        printf("Step est un pointeur vers NULL");
+    if (step == NULL) // permet de vérifier si la sauvegarde existante est attribuée a une étape 
+    {
+        printf("Step est un pointeur vers NULL"); 
         exit(1);
     }
-    if (monster == NULL){
+    if (monster == NULL) // permet de vérifier si une sauvegarde de monstre est attribuée a une étape 
+    {
         printf("monster est un pointeur vers NULL");
         exit(1);
     }
-    if (adventurer == NULL){
+    if (adventurer == NULL) // permet de vérifier si une sauvegarde d'aventurier est attribuée
+    {
         printf("adventurer est un pointeur vers NULL");
         exit(1);
     }
