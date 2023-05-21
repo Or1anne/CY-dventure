@@ -15,12 +15,12 @@ Type fight(Entity *attacker, Entity *target, char * step_name)
   printf("\n");
   confirm();
 
-
+// répeter les différentes actions que demandent le combat tant que les hp sont superieurs a 0
   while (target->stat.hp > 0)
   {
     game_sleep(1000);
     clear_console();
-
+    // vérifier que c'est le joueur qui attaque afin d'afficher ses stats en premier
     if (attacker->role == Adventurer)
     {
       game_save(step_name, *target, *attacker);
@@ -32,7 +32,7 @@ Type fight(Entity *attacker, Entity *target, char * step_name)
       game_save(step_name, *attacker, *target);
       displayStats(target, attacker);
     }
-
+    // les dégats 
     int damage = attacker->stat.atk - target->stat.def;
 
     // stop la défense, parce que cette action ne dure qu'un tour
@@ -96,7 +96,7 @@ Type fight(Entity *attacker, Entity *target, char * step_name)
         if (target->defend == true)
         {
           target->stat.hp -= damage / 2;
-
+          // phrase qui se lance quand l'un des combattant s'est défendu avant de se faire attaqué
           display_step_string("\n");
           display_step_string(getEntityName(target->role));
           display_step_string(" s'est défendu et ne prend donc que la moitié des dégats!\n");
@@ -114,7 +114,7 @@ Type fight(Entity *attacker, Entity *target, char * step_name)
     if (target->stat.hp <= 0)
     {
       
-
+      // afficher qui a gagné le combat
       if (attacker->role == Adventurer )
       { 
         game_sleep(1000);
