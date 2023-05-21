@@ -3,7 +3,7 @@
 Stats getEntityStats(Type entityType)
 {
   Stats stat;
-
+// attribuer les différentes stats aux différents personnages du jeu, chaque cas correspond a un perso et ses stats
   switch (entityType) 
   {
   case Dragon:
@@ -54,6 +54,7 @@ Stats getEntityStats(Type entityType)
 
 char *getEntityName(Type role)
 {
+  // alouer des caracteres pour pouvoir donner les noms des personnages, on peut prendre comme max 12 caracteres
   char *entityName = malloc(sizeof(char) * 12);
 
   switch (role)
@@ -88,17 +89,17 @@ char *getEntityName(Type role)
 // Affichage des statistiques
 void displayStats(Entity *adventurer, Entity *entity)
 {
-  if (adventurer == NULL)
+  if (adventurer == NULL) // s'assurer que le role de l'aventurier est attribué a quelqu'un
   {
     printf("adventurer pointer is null\n");
     exit(1);
   }
-  if (entity == NULL)
+  if (entity == NULL) // s'assurer que le role entité est attribué 
   {
     printf("entity pointer is null\n");
     exit(1);
   }
-  if (adventurer->role != Adventurer)
+  if (adventurer->role != Adventurer) // s'assurer que le role de l'aventurier et ses stats lui sont bien attribués
   {
     printf("adventurer pointer role is not an adventurer\n");
     exit(1);
