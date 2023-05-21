@@ -1,4 +1,4 @@
-Vous êtes un aventurier intrépide en quête de trésors et de gloires. Un jour, une légende parlant d'un artéfact légendaire vous vient à l'oreille :
+Vous êtes un aventurier intrépide en quête de trésors et de gloire. Un jour, une légende parlant d'un artéfact légendaire vous vient à l'oreille :
 
 Dans les profondeurs d'une grotte mystique,
 Se trouve une épée légendaire, magique.
@@ -20,4 +20,4 @@ Et que son destin sera alors scellé.
 Car cette épée est plus qu'un simple objet,
 Elle est le symbole de la force et de l'honneur parfait.
 
-Captivé par ce récit, vous décidez vous lancer à la recherche de cette épée légendaire. Ayant rassemblé tout l'équipement qui vous sera nécessaire à cette quête, vous partez à la recherche de cette dite grotte.
+Captivé par ce récit, vous décidez de vous lancer à la recherche de cette épée légendaire. Ayant rassemblé tout l'équipement qui vous sera nécessaire à cette quête, vous partez à la recherche de cette dite grotte.

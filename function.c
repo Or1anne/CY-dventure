@@ -40,7 +40,7 @@ void display_step_file(const char *step, int clear)
     file = fopen(step, "r");
     if (file == NULL)
     {
-        printf("L'ouverture du fichier \"%s\" est impossible.", step);
+        printf("L'ouverture du fichier \"%s\" est impossible.\n", step);
         exit(1);
     }
 
