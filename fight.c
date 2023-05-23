@@ -7,12 +7,21 @@ Type fight(Entity *attacker, Entity *target, char * step_name)
 {
   int input = 0;
   int choice = 0;
-
+  
+  // Annonce le début d'un combat entre les deux opposants
   clear_console();
   display_step_string("Un combat entre l'aventurier et le ");
   display_step_string(getEntityName(target->role));
   display_step_string(" est sur le point de commencer !");
   printf("\n");
+  confirm();
+
+   // Explique comment fonctionnent les commandes du combat
+  clear_console();
+  display_step_string("\n");
+  display_step_string ("Durant les combats, vous avez deux choix : \n1) Défendre \n2) Attaquer \n");
+  display_step_string ( "L'attaque permet d'infliger des dégats qui sont égal à l'attaque de l'attaquant - la défense de l'adversaire. \n");
+  display_step_string( "En cas de défense les dégats infligés sont divisé par 2\n ");
   confirm();
 
 // répeter les différentes actions que demandent le combat tant que les hp sont superieurs a 0
@@ -85,14 +94,6 @@ Type fight(Entity *attacker, Entity *target, char * step_name)
       }
       else
       {
-        if (attacker->role == Adventurer)
-        {
-          display_step_string("Vous attaquez l'ennemi...\n");
-        }
-        else
-        {
-          display_step_string("L'ennemi vous attaque...\n");
-        }
         if (target->defend == true)
         {
           target->stat.hp -= damage / 2;
