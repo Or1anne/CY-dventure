@@ -485,16 +485,3 @@ int main()
 
     return 0;
 }
-
-/*
-
-//RAJOUTER TOUT NOUVEAU FILES //
-gcc main.c function.c save.c player.c fight.c -o CYdventure.exe
-.\CYdventure.exe
-
-CHANGER LES COMMANDES WINDOWS EN LINUX DANS LE MAKEFILE ET DANS LA FONCTION DISPLAY_STEP_FILE
-
-*/
-
-// VOIR CE QUE L'ON FAIT AVEC LA FIN 3
-// BUG // NE MARCHE PAS A LA REPRISE DES COMBATS !!
