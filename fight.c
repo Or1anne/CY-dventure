@@ -19,7 +19,7 @@ Type fight(Entity *attacker, Entity *target, char * step_name)
    // Explique comment fonctionnent les commandes du combat
   clear_console();
   display_step_string("\n");
-  display_step_string ("Durant les combats, vous avez deux choix : \n1) Défendre \n2) Attaquer \n");
+  display_step_string ("Durant les combats, vous avez deux choix : \n1) Défendre \n2) Attaquer \n\n");
   display_step_string ( "L'attaque permet d'infliger des dégats qui sont égal à l'attaque de l'attaquant - la défense de l'adversaire. \n");
   display_step_string( "En cas de défense les dégats infligés sont divisé par 2\n ");
   confirm();
