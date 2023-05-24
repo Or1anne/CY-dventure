@@ -1,6 +1,7 @@
 #include "function.h"
 #include "save.h"
 #include "fight.h"
+#include "invantory.h"
 #include <string.h>
 
 int main()
@@ -15,6 +16,7 @@ int main()
 
     int winner;
     char c;
+    Invantory ad_s;
     Entity adventurer;
     Entity dragon;
     Entity goblin;
@@ -63,7 +65,7 @@ int main()
         } while (c != 'O' && c != 'N');
         if (c == 'O')
         {
-            game_load(step, &temp, &adventurer);
+            game_load(step, &temp, &adventurer,&ad_s);
             clear_console();
             if (temp.role == Boss)
             {
@@ -94,7 +96,7 @@ int main()
 
     if (0 == strcmp(step, "story/Step_00.txt"))
     {
-        game_save(step, adventurer, adventurer);
+        game_save(step, adventurer, adventurer, ad_s);
 
         // Etape 0
         printf("\n");
@@ -107,7 +109,15 @@ int main()
     if (0 == strcmp(step, "story/Step_01.txt"))
     {
         confirm();
-        game_save(step, adventurer, adventurer);
+        clear_console();
+        strcpy(ad_s.shield, "Bouclier en bois");
+        strcpy(ad_s.weapon, "Epée en bois");
+        strcpy(ad_s.animal, "Aucun");
+
+        display_stock(ad_s);
+
+        confirm();
+        game_save(step, adventurer, adventurer, ad_s);
 
         // Etape 1
         display_step_file("story/Step_01.txt", true);
@@ -120,7 +130,7 @@ int main()
     // Etape 2
     if ((0 == strcmp(step, "story/Step_02.txt")))
     {
-        game_save(step, adventurer, adventurer);
+        game_save(step, adventurer, adventurer, ad_s);
 
         printf("\n");
         display_step_file("story/Step_02.txt", true);
@@ -165,7 +175,7 @@ int main()
             {
                 if (0 == strcmp(step, "story/Step_04.txt"))
                 {
-                    game_save(step, adventurer, adventurer);
+                    game_save(step, adventurer, adventurer, ad_s);
 
                     printf("\n");
                     display_step_file("story/Step_04.txt", true);
@@ -180,9 +190,9 @@ int main()
                 {
                     if (0 == strcmp(step, "combat_kraken"))
                     {
-                        winner = fight(&adventurer, &kraken, step);
+                        winner = fight(&adventurer, &kraken, step, ad_s);
                         strcpy(step, "story/Step_07.txt");
-                        game_save(step, adventurer, adventurer);
+                        game_save(step, adventurer, adventurer, ad_s);
                     }
 
                     if (winner == Adventurer || 0 == strcmp(step, "story/Step_07.txt") ||
@@ -193,20 +203,45 @@ int main()
                         if (0 == strcmp(step, "story/Step_07.txt"))
                         {
                             // Etape 7
-                            adventurer.stat.def += 2;
-
                             confirm();
-                            game_save(step, adventurer, adventurer);
+                            game_save(step, adventurer, adventurer, ad_s);
 
                             display_step_file("story/Step_07.txt", true);
                             strcpy(step, "story/Step_09.txt");
                         }
+                        
+                            confirm();
+                            clear_console();
+                            display_step_string("Voulez-vous changer votre bouclier en bois contre le bouclier métalique ?\n");
+                            display_step_string("(O): Oui\n");
+                            display_step_string("(N): Non\n");
 
+                            // Demande de faire un choix
+                            do
+                            {
+                                display_step_string("\nVeuillez indiquer votre choix, O ou N: ");
+                                scanf("%c", &c);
+                                empty_stdin_buffer();
+                            } while (c != 'O' && c != 'N');
+                            if ( c == 'O')
+                            {   
+                                clear_console();
+                                adventurer.stat.def += 2;
+                                strcpy(ad_s.shield, "Bouclier métalique");
+                                display_step_string("\n");
+                                display_step_string("Votre défence augmente de 2.\n");
+                                display_step_string("\n");
+                                display_stock(ad_s);
+                            }
+
+                        }
+                    
+                    
                         if (0 == strcmp(step, "story/Step_09.txt"))
                         {
                             // Etape 9
                             confirm();
-                            game_save(step, adventurer, adventurer);
+                            game_save(step, adventurer, adventurer, ad_s);
 
                             display_step_file("story/Step_09.txt", true);
                             // Etape 11 et 12
@@ -216,7 +251,7 @@ int main()
 
                         if (0 == strcmp(step, "story/Step_11.txt"))
                         {
-                            game_save(step, adventurer, adventurer);
+                            game_save(step, adventurer, adventurer, ad_s);
 
                             printf("\n");
                             display_step_file("story/Step_11.txt", true);
@@ -225,7 +260,7 @@ int main()
 
                         if (0 == strcmp(step, "story/Step_12.txt"))
                         {
-                            game_save(step, adventurer, adventurer);
+                            game_save(step, adventurer, adventurer, ad_s);
 
                             printf("\n");
                             display_step_file("story/Step_12.txt", true);
@@ -235,12 +270,20 @@ int main()
 
                         if (0 == strcmp(step, "story/Step_16.txt"))
                         {
-                            adventurer.stat.hp += 25;
-                            confirm();
-                            game_save(step, adventurer, adventurer);
+
 
                             // Etape 16
+                            confirm();
                             display_step_file("story/Step_16.txt", true);
+                            
+                            confirm();                            
+                            clear_console();
+                            adventurer.stat.hp += 25;
+                            strcpy(ad_s.animal, "Créature rocheuse");
+                            display_stock(ad_s);
+
+                            game_save(step, adventurer, adventurer, ad_s);
+
 
                             strcpy(step, "story/Step_18.txt");
                         }
@@ -248,7 +291,7 @@ int main()
 
                     else
                     {
-                        game_save("story/Step_06.txt", adventurer, adventurer);
+                        game_save("story/Step_06.txt", adventurer, adventurer, ad_s);
 
                         if (0 == strcmp(step, "story/Step_06.txt"))
                         {
@@ -271,7 +314,7 @@ int main()
             {
                 if (0 == strcmp(step, "story/Step_05.txt"))
                 {
-                    game_save(step, adventurer, adventurer);
+                    game_save("story/Step_06.txt", adventurer, adventurer, ad_s);
 
                     printf("\n");
                     display_step_file("story/Step_05.txt", true);
@@ -287,9 +330,9 @@ int main()
 
                     if (0 == strcmp(step, "combat_dragon") )
                     {
-                        winner = fight(&adventurer, &dragon, step);
+                        winner = fight(&adventurer, &dragon, step, ad_s);
                         strcpy(step, "story/Step_08.txt");
-                        game_save(step, adventurer, adventurer);
+                        game_save(step, adventurer, adventurer, ad_s);
                     }
 
                     if (winner == Adventurer || 0 == strcmp(step, "story/Step_08.txt") || 0 == strcmp(step, "story/Step_10.txt") || 
@@ -300,11 +343,34 @@ int main()
                         if (0 == strcmp(step, "story/Step_08.txt"))
                         {
                             // Etape 8
-                            adventurer.stat.atk += 2;
                             confirm();
-                            game_save(step, adventurer, adventurer);
-
                             display_step_file("story/Step_08.txt", true);
+
+                            confirm();
+                            clear_console();
+                            display_step_string("Voulez-vous changer votre épée en bois contre la dague draconique ?\n");
+                            display_step_string("(O): Oui\n");
+                            display_step_string("(N): Non\n");
+
+                            // Demande de faire un choix
+                            do
+                            {
+                                clear_console();
+                                display_step_string("\nVeuillez indiquer votre choix, O ou N: ");
+                                scanf("%c", &c);
+                                empty_stdin_buffer();
+                            } while (c != 'O' && c != 'N');
+                            if ( c == 'O')
+                            {
+                                adventurer.stat.atk += 2;
+                                strcpy(ad_s.shield, "Dague draconique");
+                                display_step_string("\n");
+                                display_step_string("Votre attaque augmente de 2.\n");
+                                display_step_string("\n");
+                                display_stock(ad_s);
+                            }
+
+                            game_save(step, adventurer, adventurer, ad_s)
 
                             strcpy(step, "story/Step_10.txt");
                         }
@@ -313,7 +379,7 @@ int main()
                         {
                             // Etape 10
                             confirm();
-                            game_save(step, adventurer, adventurer);
+                            game_save(step, adventurer, adventurer, ad_s);
 
                             display_step_file("story/Step_10.txt", true);
 
@@ -326,7 +392,7 @@ int main()
                         {
                             if ((0 == strcmp(step, "story/Step_13.txt")))
                             {
-                                game_save(step, adventurer, adventurer);
+                                game_save(step, adventurer, adventurer, ad_s);
 
                                 printf("\n");
                                 display_step_file("story/Step_13.txt", true);
@@ -336,7 +402,7 @@ int main()
 
                             if (0 == strcmp(step, "combat_goblin"))
                             {
-                                winner = fight(&adventurer, &goblin, step);
+                                winner = fight(&adventurer, &goblin, step, ad_s);
 
                                 if (winner != Adventurer)
                                 {
@@ -356,7 +422,7 @@ int main()
                         {
                             if ((0 == strcmp(step, "story/Step_14.txt")))
                             {
-                                game_save(step, adventurer, adventurer);
+                                game_save(step, adventurer, adventurer, ad_s);
 
                                 printf("\n");
                                 display_step_file("story/Step_14.txt", true);
@@ -366,7 +432,7 @@ int main()
 
                             if (0 == strcmp(step, "combat_titan"))
                             {
-                                winner = fight(&adventurer, &titan, step);
+                                winner = fight(&adventurer, &titan, step, ad_s);
 
                                 if (winner != Adventurer)
                                 {
@@ -384,24 +450,64 @@ int main()
                         if (0 == strcmp(step, "story/Step_15.txt"))
                         {
                             // Etape 15
-                            adventurer.stat.def += 3;
-                            game_save(step, adventurer, adventurer);
-
+                            confirm();
                             printf("\n");
                             display_step_file("story/Step_15.txt", true);
 
                             confirm();
+                            clear_console();
+                            display_step_string("Voulez-vous changer ");
+                            display_step_string(ad_s.shield);
+                            display_step_string(" contre le bouclier du forgeron ?\n");
+                            display_step_string("(O): Oui\n");
+                            display_step_string("(N): Non\n");
+
+                            // Demande de faire un choix
+                            do
+                            {
+                                clear_console();
+                                display_step_string("\nVeuillez indiquer votre choix, O ou N: ");
+                                scanf("%c", &c);
+                                empty_stdin_buffer();
+                            } while (c != 'O' && c != 'N');
+                            if ( c == 'O')
+                            {   
+                                if(strcmp(ad_s.shield, "Bouclier métalique") == 0)
+                                {
+                                    adventurer.stat.def += 3;
+                                    strcpy(ad_s.shield, "Bouclier du Forgeron");
+                                    display_step_string("\n");
+                                    display_step_string("Votre attaque augmente de 3.");
+                                    display_step_string("\n");
+                                    display_stock(ad_s);
+                                }  
+                                else{
+                                    adventurer.stat.def += 5;
+                                    strcpy(ad_s.shield, "Bouclier du Forgeron");
+                                    display_step_string("\n");
+                                    display_step_string("Votre attaque augmente de 5.");
+                                    display_step_string("\n");
+                                    display_stock(ad_s);
+                                }
+                            }
+
                             strcpy(step, "story/Step_17.txt");
                         }
 
                         if (0 == strcmp(step, "story/Step_17.txt"))
                         {
                             // Etape 17
-                            adventurer.stat.hp += 25;
-                            game_save(step, adventurer, adventurer);
-
                             confirm(); 
                             display_step_file("story/Step_17.txt", true);
+
+                            confirm();
+                            clear_console();
+                            adventurer.stat.hp += 25;
+                            strcpy(ad_s.animal, "Boule noire");
+                            display_stock(ad_s);
+
+                            game_save(step, adventurer, adventurer, ad_s);
+
                             strcpy(step, "story/Step_18.txt");
                         }
                     }
@@ -421,7 +527,7 @@ int main()
             {
                 // Etape 18
                 confirm();
-                game_save(step, adventurer, adventurer);
+               game_save(step, adventurer, adventurer, ad_s);
 
                 display_step_file("story/Step_18.txt", true);
 
@@ -432,7 +538,7 @@ int main()
             {
                 // Etape 19
                 confirm();
-                game_save(step, adventurer, adventurer);
+                game_save(step, adventurer, adventurer, ad_s);
 
                 display_step_file("story/Step_19.txt", true);
 
@@ -451,7 +557,7 @@ int main()
 
             if(0 == strcmp(step, "story/Fight_boss.txt"))
             {
-                game_save(step, adventurer, adventurer);
+                game_save(step, adventurer, adventurer, ad_s);
 
                 display_step_file("story/Fight_boss.txt", true);
                 confirm();
@@ -461,7 +567,7 @@ int main()
             // COMBAT FINAL
             if (0 == strcmp(step, "combat_boss"))
             {
-                winner = fight(&adventurer, &boss, step);
+                winner = fight(&adventurer, &boss, step, ad_s);
 
                 if (winner == Adventurer)
                 {
