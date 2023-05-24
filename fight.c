@@ -3,7 +3,7 @@
 #include "save.h"
 
 
-Type fight(Entity *attacker, Entity *target, char * step_name)
+Type fight(Entity *attacker, Entity *target, char * step_name, Invantory stock)
 {
   int input = 0;
   int choice = 0;
@@ -29,16 +29,17 @@ Type fight(Entity *attacker, Entity *target, char * step_name)
   {
     game_sleep(1000);
     clear_console();
+    
     // vérifier que c'est le joueur qui attaque afin d'afficher ses stats en premier
     if (attacker->role == Adventurer)
     {
-      game_save(step_name, *target, *attacker);
+      game_save(step_name, *target, *attacker, stock);
       displayStats(attacker, target);
     }
 
     else
     {
-      game_save(step_name, *attacker, *target);
+      game_save(step_name, *attacker, *target, stock);
       displayStats(target, attacker);
     }
     // les dégats 
@@ -97,6 +98,7 @@ Type fight(Entity *attacker, Entity *target, char * step_name)
         if (target->defend == true)
         {
           target->stat.hp -= damage / 2;
+          
           // phrase qui se lance quand l'un des combattant s'est défendu avant de se faire attaqué
           display_step_string("\n");
           display_step_string(getEntityName(target->role));
