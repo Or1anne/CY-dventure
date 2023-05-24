@@ -13,7 +13,7 @@ int game_save_exist(){
 };
 
 // Permet de sauvegarder une partie en cours
-void game_save(char *step, Entity monster, Entity adventurer){
+void game_save(char *step, Entity monster, Entity adventurer, Invantory stock){
     Save_Struct save;
     FILE *file = fopen(FILE_SAVE_NAME, "wb");
 
@@ -25,6 +25,7 @@ void game_save(char *step, Entity monster, Entity adventurer){
     strcpy(save.step,step);
     save.monster = monster;
     save.adventurer = adventurer;
+    save.stock = stock;
 
     fwrite(&save, sizeof(save), 1, file);
 
@@ -33,7 +34,7 @@ void game_save(char *step, Entity monster, Entity adventurer){
 
 
 // Permet de lire la partie sauvegardée
-void game_load(char *step, Entity *monster, Entity *adventurer){
+void game_load(char *step, Entity *monster, Entity *adventurer, Invantory *stock){
     Save_Struct save;
     FILE *file = fopen(FILE_SAVE_NAME, "rb");
 
@@ -57,12 +58,17 @@ void game_load(char *step, Entity *monster, Entity *adventurer){
         printf("adventurer est un pointeur vers NULL");
         exit(1);
     }
+        if (stock == NULL){
+        printf("stock est un pointeur vers NULL");
+        exit(1);
+    }
 
     fread(&save, sizeof(save), 1, file);
     
     strcpy(step,save.step);
     *monster = save.monster;
     *adventurer = save.adventurer;
+    *stock = save.stock;
 
     fclose(file);
 };
