@@ -1,6 +1,5 @@
 #ifndef PLAYER_HEADER
-#define PLAYER_HEADER
-
+#define PLAYER_HEADER 1
 // déclaration des bibliothèques
 #include <stdio.h>
 #include <stdlib.h>
