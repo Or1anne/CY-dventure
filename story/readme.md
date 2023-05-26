@@ -17,7 +17,7 @@ This is a project for the CY TECH School in Pre Ing 1 MIM 1. The directives are 
 
 ## Content
 
-Expliquer le but du jeu
+Expliquer le fonctionnement du jeu
 
 ## Goal
 
