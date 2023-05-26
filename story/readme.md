@@ -17,14 +17,14 @@ This is a project for the CY TECH School in Pre Ing 1 MIM 1. The directives are 
 
 ## Content
 
-Expliquer le fonctionnement du jeu
+Le jeu est composé de différents choix qui permettent d'avancer ou de perdre. Afin de faire un choix, il faut appuyer sur A,B ou C lorsqu'il y'en a 3. Des combats sont aussi présent dans le jeu avec la possibilité d'attaquer ou défendre, leur fonctionnement est expliqué a chaque début de combat. Les statistiques peuvent aussi changer au cours du jeu via différents équipement qu'on peut avoir au cours de l'aventture.
 
 ## Goal
 
-But du jeu
+Le but du jeu est d'avancé a travers la grotte en battant les différents ennemis sur notre chemin afin de récuperer l'épée légendaire se trouvont au fin fond de cette grotte.
 
 ## Group
-Gens du groupe 
+Notre groupe est composé d'Orianne Courtade, Prince Kouakou et Nicolas Le Moigne
 
 ## Files 
 
