@@ -30,7 +30,7 @@ Notre groupe est composé d' ORIANNE COURTADE, PRINCE KOUAKOU et NICOLAS LE MOIG
 [main.c] (https://github.com/Or1anne/CY-dventure/blob/master/main.c) est le fichier principal (main) et le point d'entré. Les fonctions du jeux sont dans le [function.h] (./CY-dventure/function.h) et  [function.c] (./CY-dventure/function.c). [fight.h] (./CY-dventure/fight.h) et  [fight.] (./CY-dventure/fight.) contiennent les fonctions de déroulement des combats et leur affichage. [player.h] (./CY-dventure/player.h) et  [player.c] (./CY-dventure/player.c) contiennent les statisitques des différents personnages et leur affichage. L'afffichage de l'inventaire de notre aventurier est contenu dans [invantory.h]  (./CY-dventure/invantory.h) et  [invantory.c]  (./CY-dventure/invantory.c). [save.h] (./CY-dventure/save.h) et [save.c] (./CY-dventure/save.c) permettent de sauvegarder la partie en cours et de la relancer a tout moment. Le dossier [story] (./CY-dventure/Story) contient l'ensemble des textes ( choix, etapes et fins) de l'histoire du jeu.
 ## Compile 
 Pour compiler sur Linux, vous devez :
-1- faire make 
+\n 1- faire make 
 2- bin/CYdventure.exe 
 Pour supprimer les dossiers crées par le makefile dans le terminal, on fait la commmande make clean 
 
