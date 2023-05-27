@@ -24,10 +24,10 @@ Le jeu est composé de différents choix qui permettent d'avancer ou de perdre. 
 Le but du jeu est d'avancé a travers la grotte en battant les différents ennemis sur notre chemin afin de récuperer l'épée légendaire se trouvont au fin fond de cette grotte.
 
 ## Group
-Notre groupe est composé d'Orianne Courtade, Prince Kouakou et Nicolas Le Moigne
+Notre groupe est composé d' ORIANNE COURTADE, PRINCE KOUAKOU et NICOLAS LE MOIGNE
 
 ## Files 
-[main.c] (https://github.com/Or1anne/CY-dventure/blob/master/main.c) est le fichier principal (main) et le point d'entré. Les fonctions du jeux sont dans le [function.h] (./CY-dventure/function.h) et  [function.c] (./CY-dventure/function.c). [fight.h] (./CY-dventure/fight.h) et  [fight.] (./CY-dventure/fight.) contiennent les fonctions de déroulement des combats et leur affichage. [player.h] (./CY-dventure/player.h) et  [player.c] (./CY-dventure/player.c) contiennent les statisitques des différents personnages et leur affichage.  
+[main.c] (https://github.com/Or1anne/CY-dventure/blob/master/main.c) est le fichier principal (main) et le point d'entré. Les fonctions du jeux sont dans le [function.h] (./CY-dventure/function.h) et  [function.c] (./CY-dventure/function.c). [fight.h] (./CY-dventure/fight.h) et  [fight.] (./CY-dventure/fight.) contiennent les fonctions de déroulement des combats et leur affichage. [player.h] (./CY-dventure/player.h) et  [player.c] (./CY-dventure/player.c) contiennent les statisitques des différents personnages et leur affichage. L'afffichage de l'inventaire de notre aventurier est contenu dans [invantory.h]  (./CY-dventure/invantory.h) et  [invantory.c]  (./CY-dventure/invantory.c). [save.h] (./CY-dventure/save.h) et [save.c] (./CY-dventure/save.c) permettent de sauvegarder la partie en cours et de la relancer a tout moment.
 ## Compile 
 Comment compiler ?
 
