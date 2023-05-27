@@ -27,7 +27,7 @@ Le but du jeu est d'avancé a travers la grotte en battant les différents ennem
 Notre groupe est composé d'Orianne Courtade, Prince Kouakou et Nicolas Le Moigne
 
 ## Files 
-[main.c] (https://github.com/Or1anne/CY-dventure/blob/master/main.c) est le fichier principal (main) et le point d'entré. 
+[main.c] (https://github.com/Or1anne/CY-dventure/blob/master/main.c) est le fichier principal (main) et le point d'entré. Les fonctions du jeux sont dans le [function.h] (./CY-dventure/function.h) et  [function.c] (./CY-dventure/function.c).
 ## Compile 
 Comment compiler ?
 
