@@ -34,8 +34,8 @@ L'afffichage de l'inventaire de notre aventurier est contenu dans [invantory.h] 
 [save.h] (https://github.com/Or1anne/CY-dventure/blob/master/save.h) et [save.c] (https://github.com/Or1anne/CY-dventure/blob/master/save.c) permettent de sauvegarder la partie en cours et de la relancer a tout moment.  
 Le dossier [story] (https://github.com/Or1anne/CY-dventure/tree/master/story) contient l'ensemble des textes ( choix, etapes et fins) de l'histoire du jeu.
 ## Compile 
-Pour compiler sur Linux, vous devez :  
-1- faire make   
+Pour compiler sur Linux, vous devez faire :  
+1- make   
 2- bin/CYdventure.exe   
 Pour supprimer les dossiers créés par le makefile dans le terminal, on fait la commmande make clean 
 
