@@ -40,7 +40,7 @@ Pour compiler sur Linux, vous devez faire :
 Pour supprimer les dossiers créés par le makefile dans le terminal, on fait la commmande make clean 
 
 ## Preview
-Voici quelques captures d'écran des combats, dans [combat.png](https://github.com/Or1anne/CY-dventure/blob/master/Combat.png)
+Voici quelques captures d'écran des combats, dans ![combat.png](https://github.com/Or1anne/CY-dventure/blob/master/Combat.png)
 
 # CY Tech 
 ![CY tech icon](https://github.com/Or1anne/CY-dventure/blob/master/CY%20Tech_Pant446.jpg)
