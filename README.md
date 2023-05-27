@@ -13,7 +13,7 @@
 
 ## About
 
-This is a project for the CY TECH School in Pre Ing 1 MIM 1. The directives are said in [this pdf file](./file à mettre)
+This is a project for the CY TECH School in Pre Ing 1 MIM 1. The directives are said in [this pdf file](https://github.com/Or1anne/CY-dventure/blob/master/prAING1_Projet_CY_dventure_v1.0.pdf)
 
 ## Content
 
@@ -40,7 +40,7 @@ Pour compiler sur Linux, vous devez faire :
 Pour supprimer les dossiers créés par le makefile dans le terminal, on fait la commmande make clean 
 
 ## Preview
-(facultatif)
+
 
 # CY Tech 
 ![CY tech icon](./images/nom de l'image.png)
