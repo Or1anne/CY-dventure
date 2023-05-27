@@ -27,7 +27,7 @@ Le but du jeu est d'avancé a travers la grotte en battant les différents ennem
 Notre groupe est composé d'Orianne Courtade, Prince Kouakou et Nicolas Le Moigne
 
 ## Files 
-[main.c] (./main.c)
+[main.c] (main.c)
 ## Compile 
 Comment compiler ?
 
