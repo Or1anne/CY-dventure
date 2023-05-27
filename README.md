@@ -17,11 +17,11 @@ This is a project for the CY TECH School in Pre Ing 1 MIM 1. The directives are 
 
 ## Content
 
-Le jeu est composé de différents choix qui permettent d'avancer ou de perdre. Afin de faire un choix, il faut appuyer sur A,B ou C lorsqu'il y'en a 3. Des combats sont aussi présent dans le jeu avec la possibilité d'attaquer ou défendre, leur fonctionnement est expliqué a chaque début de combat. Les statistiques peuvent aussi changer au cours du jeu via différents équipement qu'on peut avoir au cours de l'aventture.
+Le jeu est composé de différents choix qui permettent d'avancer ou de perdre. Afin de faire un choix, il faut appuyer sur A,B ou C lorsqu'il y'en a trois. Des combats sont aussi présent dans le jeu avec la possibilité d'attaquer ou défendre pour les deux adversaires, leur fonctionnement est expliqué à chaque début de combat. Les statistiques peuvent aussi changer au cours du jeu via différents équipements qu'on peut avoir durant l'aventture.
 
 ## Goal
 
-Le but du jeu est d'avancé a travers la grotte en battant les différents ennemis sur notre chemin afin de récuperer l'épée légendaire se trouvont au fin fond de cette grotte.
+Le but du jeu est d'avancer à travers la grotte en battant les différents ennemis sur votre chemin afin de récuperer l'épée légendaire se trouvant au fin fond de cette grotte.
 
 ## Group
 Notre groupe est composé d' ORIANNE COURTADE, PRINCE KOUAKOU et NICOLAS LE MOIGNE
@@ -37,7 +37,7 @@ Le dossier [story] (https://github.com/Or1anne/CY-dventure/tree/master/story) co
 Pour compiler sur Linux, vous devez :  
 1- faire make   
 2- bin/CYdventure.exe   
-Pour supprimer les dossiers crées par le makefile dans le terminal, on fait la commmande make clean 
+Pour supprimer les dossiers créés par le makefile dans le terminal, on fait la commmande make clean 
 
 ## Preview
 (facultatif)
