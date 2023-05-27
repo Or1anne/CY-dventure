@@ -30,7 +30,7 @@ Notre groupe est composé d' ORIANNE COURTADE, PRINCE KOUAKOU et NICOLAS LE MOIG
 [main.c](https://github.com/Or1anne/CY-dventure/blob/master/main.c) est le fichier principal (main) et le point d'entré.    
 Les fonctions du jeux sont dans le [function.h](https://github.com/Or1anne/CY-dventure/blob/master/function.h) et  [function.c](https://github.com/Or1anne/CY-dventure/blob/master/function.c).   
 [fight.h](https://github.com/Or1anne/CY-dventure/blob/master/fight.h) et  [fight.c](https://github.com/Or1anne/CY-dventure/blob/master/fight.c) contiennent les fonctions de déroulement des combats et leur affichage.   [player.h](https://github.com/Or1anne/CY-dventure/blob/master/player.h) et  [player.c](https://github.com/Or1anne/CY-dventure/blob/master/player.c) contiennent les statisitques des différents personnages et leur affichage.    
-L'afffichage de l'inventaire de notre aventurier est contenu dans [invantory.h](https://github.com/Or1anne/CY-dventure/blob/master/invantory.h) et  [invantory.c](https://github.com/Or1anne/CY-dventure/blob/master/invantory.c).    
+L'afffichage de l'inventaire de notre aventurier est contenu dans [invantory.h](https://github.com/Or1anne/CY-dventure/blob/master/invantory.h)
 [save.h](https://github.com/Or1anne/CY-dventure/blob/master/save.h) et [save.c](https://github.com/Or1anne/CY-dventure/blob/master/save.c) permettent de sauvegarder la partie en cours et de la relancer a tout moment.  
 Le dossier [story](https://github.com/Or1anne/CY-dventure/tree/master/story) contient l'ensemble des textes ( choix, etapes et fins) de l'histoire du jeu.
 ## Compile 
