@@ -4,7 +4,7 @@
 // déclaration des constantes
 #define true 1
 #define false 0
-#define TEXT_SPEED 1
+#define TEXT_SPEED 40
 
 // déclaration des bibliothèques
 #include <stdio.h>
